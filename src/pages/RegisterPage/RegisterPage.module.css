@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  background-color: var(--primary-color);
+  min-height: 100vh;
+  position: relative;
+}
+
+.label {
+  font-weight: bold;
+  font-size: x-large;
+  margin-top: 10px;
+}
+
+.input {
+  background-color: var(--primary-color);
+  border-radius: 15px;
+  height: 4vh;
+  padding: 5px;
+  font-size: large;
+}
+
+.buttonSubmit {
+  min-height: 4vh;
+  min-width: 11vw;
+  border-radius: 15px;
+  cursor: pointer;
+  background-color: var(--fifth-color);
+  color: var(--primary-color);
+  font-size: x-large;
+  font-weight: bolder;
+  margin-top: 50px;
+  margin-bottom: 25px;
+  padding: 10px;
+  border: none;
+}
+.buttonSubmit:hover {
+  background-color: var(--primary-color);
+  color: var(--fifth-color);
+  border: 3px solid var(--fifth-color);
+}
+
+.error {
+  color: red;
+  font-size: medium;
+  margin: 5px;
+}

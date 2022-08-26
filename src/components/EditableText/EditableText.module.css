@@ -1,0 +1,45 @@
+.inputText {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: var(--secondary-color);
+  border-radius: 15px;
+  padding: 5px;
+  margin: 10px;
+  font-size: larger;
+  width: 95%;
+}
+.containerButton {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.button {
+  border-radius: 25px;
+  border: solid 2px black;
+  height: 5vh;
+  width: 10vw;
+  padding: 5px;
+  margin: 10px;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input {
+  border-radius: 25px;
+  border: solid 2px black;
+  height: fit-content;
+  width: 80vw;
+  padding: 5px;
+  margin: 10px;
+  font-size: larger;
+}
+.p {
+  height: fit-content;
+  width: 80vw;
+  font-size: x-large;
+  /* font-family: "Roboto", sans-serif; */
+  font-weight: bold;
+}

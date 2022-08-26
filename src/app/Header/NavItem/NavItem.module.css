@@ -1,0 +1,23 @@
+.header_link {
+  text-decoration: none;
+  /* color: var(--secondary-color); */
+}
+
+.header_link:hover {
+  color: var(--third-color);
+  /* border-bottom: 2px solid var(--fourth-color); */
+}
+
+.active_link {
+  color: var(--font-color-1);
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.title_navBar {
+  color: var(--sixth-color);
+}
+
+.title_navBar:hover {
+  color: var(--font-color-1);
+}
