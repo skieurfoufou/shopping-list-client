@@ -1,8 +1,9 @@
 import axios from "axios";
 import env from "../config/env";
+import { List, UpdateList } from "../types/ListType";
 
 export const createList = async (
-  newList: { name: string; listDetails: [] },
+  newList: { title: string; listDetails: [] },
   token: string
 ) => {
   try {
@@ -18,12 +19,12 @@ export const createList = async (
 
 export const updateList = async (
   id: string,
-  list: { name: string; listDetails: [] },
+  list: UpdateList,
   token: string
 ) => {
   try {
     const url = `${env.SERVER_URL}/lists/${id}`;
-    console.log(url);
+    console.log({ url, list });
     const headers = createHeaders({ token });
     const res = await axios.put(url, list, { headers });
     return res.data;
@@ -33,7 +34,7 @@ export const updateList = async (
   }
 };
 
-export const getOneList = async (id: string) => {
+export const getOneList = async (id: string): Promise<List> => {
   try {
     const url = `${env.SERVER_URL}/lists/${id}`;
     console.log(url);
@@ -45,7 +46,7 @@ export const getOneList = async (id: string) => {
   }
 };
 
-export const getAllLists = async (obj: { name: string; q: string }) => {
+export const getAllLists = async (obj: { name?: string; q?: string }) => {
   try {
     const parameters = [];
     if (obj.name) {
@@ -60,6 +61,18 @@ export const getAllLists = async (obj: { name: string; q: string }) => {
     }`;
     console.log(url);
     const res = await axios.get(url);
+    return res.data;
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+export const deleteList = async (id: string, token: string) => {
+  try {
+    const url = `${env.SERVER_URL}/lists/${id}`;
+    const headers = createHeaders({ token });
+    const res = await axios.delete(url, { headers });
     return res.data;
   } catch (err) {
     console.error(err);

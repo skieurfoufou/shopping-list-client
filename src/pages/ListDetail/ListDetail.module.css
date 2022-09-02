@@ -13,22 +13,22 @@
   width: 30vw;
 }
 
-.buttonSubmit {
-  min-height: 4vh;
-  min-width: 11vw;
-  border-radius: 15px;
-  cursor: pointer;
-  background-color: var(--fifth-color);
-  color: var(--primary-color);
-  font-size: x-large;
-  font-weight: bolder;
-  margin-top: 50px;
-  margin-bottom: 25px;
-  padding: 10px;
-  border: none;
+.add {
+  font-size: 3rem;
+  border: 3px solid black;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.buttonSubmit:hover {
-  background-color: var(--primary-color);
-  color: var(--fifth-color);
-  border: 3px solid var(--fifth-color);
+
+.detailList {
+  display: flex;
+  flex-direction: column;
+  height: 72vh;
+  overflow-y: scroll;
+  align-items: center;
+  width: 100%;
 }

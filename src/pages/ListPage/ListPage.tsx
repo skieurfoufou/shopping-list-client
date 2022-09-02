@@ -1,22 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import classes from "./ListPage.module.css";
-import ListDetail from "../ListDetail/ListDetail";
+import { getAllLists } from "../../apis/list.api";
+import Spinner from "../../components/Spinner/Spinner";
+import DisplayList from "./DisplayList/DisplayList";
+import { List } from "../../types/ListType";
 
 function ListPage() {
+  const [lists, setLists] = useState<List[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const loadAllLists = async () => {
+    setIsLoading(true);
+    try {
+      const response = await getAllLists({});
+      //TODO: make the sort by name in mongoose not in front
+      const sortedRes = response.sort((a: any, b: any) =>
+        a.title < b.title ? -1 : 1
+      );
+      setLists(sortedRes);
+    } catch (error: any) {
+      if (error.response.status === 404) {
+        setLists([]);
+      }
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    loadAllLists();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className={classes.container}>
       <h2 className={classes.title}>ListPage</h2>
       <br></br>
-      <div className={classes.link}>
-        <Link to="/listDetail?id=1">Benichou List</Link>
-      </div>
-      <div className={classes.link}>
-        <Link to="/listDetail">sayada list</Link>
-      </div>
-      <div className={classes.link}>
-        <Link to="/listDetail">mamy fortune list</Link>
-      </div>
+      {!isLoading && lists.length > 0 && <DisplayList lists={lists} />}
+      {!isLoading && lists.length === 0 && <p>there is no lists</p>}
+      {isLoading && <Spinner />}
     </div>
   );
 }
