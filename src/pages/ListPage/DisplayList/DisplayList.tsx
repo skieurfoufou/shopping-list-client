@@ -9,12 +9,15 @@ interface DisplayTextProps extends PropsWithChildren {
 
 function DisplayList({ lists }: DisplayTextProps) {
   return (
-    <div>
+    <div className={classes.container}>
       {lists.map((list) => (
         <Link to={`/list-detail?id=${list._id}`} key={list._id}>
-          <div className={classes.title}>{list.title}</div>
+          <div className={classes.title}>&#x21db;{list.title}</div>
         </Link>
       ))}
+      <Link to={"/create-list"}>
+        <div className={classes.title}>&#x261B;CREATE A NEW LIST&#x261A;</div>
+      </Link>
     </div>
   );
 }

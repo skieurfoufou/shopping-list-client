@@ -3,13 +3,13 @@ import env from "../config/env";
 import { List, UpdateList } from "../types/ListType";
 
 export const createList = async (
-  newList: { title: string; listDetails: [] },
+  list: Partial<Omit<List, "_id">>,
   token: string
 ) => {
   try {
     const url = `${env.SERVER_URL}/lists`;
     const headers = createHeaders({ token });
-    const res = await axios.post(url, newList, { headers });
+    const res = await axios.post(url, list, { headers });
     return res.data;
   } catch (err: any) {
     console.error(err);

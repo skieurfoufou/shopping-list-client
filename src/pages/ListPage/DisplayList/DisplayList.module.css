@@ -1,2 +1,18 @@
+.container {
+}
+
 .title {
+  margin: 1rem;
+  padding-bottom: 1rem;
+  color: var(--sixth-color);
+  font-weight: bold;
+  font-size: x-large;
+}
+
+a {
+  text-decoration: none;
+}
+
+.title:hover {
+  color: var(--font-color-1);
 }

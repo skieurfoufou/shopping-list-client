@@ -21,7 +21,7 @@ function Footer() {
       <div className={classes.iconsCenter}>
         <div className={classes.cube}></div>
         <div className={classes.cube2}>
-          <Link to="/listDetail">
+          <Link to={"/create-list"}>
             <img
               src={add}
               className={classes.addLogo}

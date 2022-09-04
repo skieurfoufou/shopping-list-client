@@ -12,6 +12,7 @@ import ListPage from "../pages/ListPage/ListPage";
 import Footer from "./Footer/Footer";
 import ListDetail from "../pages/ListDetail/ListDetail";
 import About from "../pages/About/About";
+import CreateList from "../pages/CreateList/CreateList";
 
 function App() {
   const auth = useAuth();
@@ -39,6 +40,7 @@ function App() {
           <Route path="/list" element={<ListPage />} />
           <Route path="/list-detail" element={<ListDetail />} />
           <Route path="/about" element={<About />} />
+          <Route path="/create-list" element={<CreateList />} />
         </Routes>
         <Footer />
       </div>

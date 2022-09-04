@@ -75,6 +75,13 @@ export function useListById() {
     setList({ ...list, items: newValues });
   };
 
+  const changeIsDone = (id: string, newValue: boolean) => {
+    const newValues = list.items.map((item) =>
+      item._id === id ? { ...item, isDone: newValue } : item
+    );
+    setList({ ...list, items: newValues });
+  };
+
   const addListItem = () => {
     const newListItems = [...list.items];
     newListItems.push({
@@ -101,6 +108,7 @@ export function useListById() {
     changeListItem,
     addListItem,
     changeIsEdit,
+    changeIsDone,
     deleteItem,
   };
 }

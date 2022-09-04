@@ -8,9 +8,42 @@
   justify-content: flex-start;
   /* position: relative; */
 }
+
+.titleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 .title {
   border-bottom: 3px double black;
-  width: 30vw;
+  width: auto;
+  text-transform: uppercase;
+}
+.button {
+  border-radius: 25px;
+  border: solid 2px black;
+  height: 2.5vh;
+  min-width: 2.5vw;
+  padding: 3px;
+  margin: 3px;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.applogo {
+  animation: open 1s linear;
+}
+
+@keyframes open {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
 }
 
 .add {
@@ -22,6 +55,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .detailList {

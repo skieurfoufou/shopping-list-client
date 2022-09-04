@@ -33,7 +33,7 @@ function ListPage() {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.title}>ListPage</h2>
+      <h2 className={classes.title}>MY LISTS</h2>
       <br></br>
       {!isLoading && lists.length > 0 && <DisplayList lists={lists} />}
       {!isLoading && lists.length === 0 && <p>there is no lists</p>}

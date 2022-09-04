@@ -1,8 +1,8 @@
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, useState } from "react";
 import classes from "./EditableText.module.css";
 import edit from "./edit_icon.svg";
 import save from "./save_icon.svg";
-import menu from "./3dots_icon.svg";
+
 import deleteImg from "./delete_icon.svg";
 
 interface EditableTextProps extends PropsWithChildren {
@@ -10,13 +10,17 @@ interface EditableTextProps extends PropsWithChildren {
   onDelete: () => void;
   value: string;
   isEdit: boolean;
+  isDone: boolean;
   setIsEdit: (b: boolean) => void;
+  setIsDone: (b: boolean) => void;
 }
 
 function EditableText({
   onChange,
   isEdit,
+  isDone,
   setIsEdit,
+  setIsDone,
   onDelete,
   value,
 }: EditableTextProps) {
@@ -25,23 +29,26 @@ function EditableText({
     onChange(targetValue);
   };
 
-  function handleDoubleClick() {
-    console.log("i had doubleClicked");
-  }
-
   return (
-    <div className={classes.inputText} onDoubleClick={handleDoubleClick}>
+    <div className={`${classes.inputText} ${isDone ? classes.done : ""}`}>
       {isEdit ? (
         <input
           className={classes.input}
           placeholder={"write here"}
           value={value}
           onChange={onValueChange}
-          maxLength={22}
+          // maxLength={22}
           autoFocus
         />
       ) : (
-        <p className={classes.p}>{value}</p>
+        <p
+          onClick={() => {
+            if (!isEdit) setIsDone(!isDone);
+          }}
+          className={classes.p}
+        >
+          {value}
+        </p>
       )}
       <div className={classes.containerButton}>
         <div className={classes.button} onClick={() => setIsEdit(!isEdit)}>
@@ -50,7 +57,7 @@ function EditableText({
               src={save}
               className={classes.appLogo}
               alt="save"
-              height="25px"
+              height="20px"
             />
           ) : (
             <img
@@ -61,14 +68,16 @@ function EditableText({
             />
           )}
         </div>
-        <div className={classes.button} onClick={onDelete}>
-          <img
-            src={deleteImg}
-            className={classes.appLogo}
-            alt="delete"
-            height="25px"
-          />
-        </div>
+        {onDelete && (
+          <div className={classes.button} onClick={onDelete}>
+            <img
+              src={deleteImg}
+              className={classes.appLogo}
+              alt="delete"
+              height="25px"
+            />
+          </div>
+        )}
         {/* <div>
           <img
             src={menu}

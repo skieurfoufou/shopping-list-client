@@ -6,10 +6,11 @@ import { AuthContext } from "../../context/AuthContext";
 import { Navigate } from "react-router-dom";
 import Spinner from "../../components/Spinner/Spinner";
 import { isValidEmail, isValidRepeatPassword } from "../../utils/validation";
-import { createUser } from "../../apis/auth.api";
+import { createUser } from "../../apis/user.api";
 import { ErrorMessage } from "@hookform/error-message";
 
 type FormFields = {
+  fullName: string;
   email: string;
   password: string;
   repeatPassword: string;
@@ -36,7 +37,11 @@ function RegisterPage() {
   const onFormSubmit = async (formData: FormFields) => {
     setIsLoading(true);
     console.log(formData);
-    await createUser({ email: formData.email, password: formData.password });
+    await createUser({
+      fullName: formData.fullName,
+      email: formData.email,
+      password: formData.password,
+    });
     setIsLoading(false);
   };
 
@@ -55,6 +60,18 @@ function RegisterPage() {
     <>
       <form onSubmit={handleSubmit(onFormSubmit)}>
         <div className={classes.container}>
+          <label className={classes.label}>Full Name</label>
+          <input
+            className={classes.input}
+            {...register("fullName", {
+              required: "full Name required",
+            })}
+          />
+          <ErrorMessage
+            errors={errors}
+            name="fullName"
+            render={({ message }) => <p className={classes.error}>{message}</p>}
+          />
           <label className={classes.label}>Email</label>
           <input
             className={classes.input}

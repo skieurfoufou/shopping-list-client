@@ -44,7 +44,6 @@ function reducer(
 
       const decoded = jwt_decode<{ exp: number }>(tokenFromStorage);
       const isTokenExpired = decoded.exp * 1000 < Date.now();
-
       if (isTokenExpired) {
         return clearToken();
       }

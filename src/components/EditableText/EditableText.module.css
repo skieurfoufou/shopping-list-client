@@ -8,6 +8,7 @@
   margin: 10px;
   font-size: larger;
   width: 95%;
+  cursor: pointer;
 }
 .containerButton {
   display: flex;
@@ -20,7 +21,7 @@
   border: solid 2px black;
   height: 2.5vh;
   width: 6vw;
-  padding: 3px;
+  padding: 5px;
   margin: 3px;
   background-color: var(--primary-color);
   display: flex;
@@ -43,4 +44,28 @@
   font-size: x-large;
   /* font-family: "Roboto", sans-serif; */
   font-weight: bold;
+}
+
+.done {
+  color: var(--third-color);
+  position: relative;
+  text-decoration: line-through;
+}
+.done::after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  width: 80%;
+  height: 2px;
+  background: var(--third-color);
+  animation: strike 1s ease-out forwards;
+}
+@keyframes strike {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 70%;
+  }
 }
